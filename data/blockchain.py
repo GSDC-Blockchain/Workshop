@@ -6,6 +6,7 @@ class Blockchain:
         self.chain = {}
         self.insert_block(GenesisBlock(), GENESIS_HASH)
 
+    # Insert block in a dictionary
     def insert_block(self, block, blockHash):
         self.chain[blockHash] = block
 

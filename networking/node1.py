@@ -3,6 +3,8 @@ import time
 from networking.p2pnode import Peer2PeerNode
 
 
+# Node usage
+
 node = Peer2PeerNode("127.0.0.1", 10001)
 time.sleep(1)
 

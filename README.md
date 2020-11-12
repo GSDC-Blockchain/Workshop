@@ -21,6 +21,10 @@
 
     This message means that a node wants to know new addresses. The node's peer gets all of it's peer addresses and sends it back
     to the node initiator
+    
+ - **mult_addr**
+
+    Send multiple addresses to a node, delimited by a comma (,)
 
   ## Nodes
 

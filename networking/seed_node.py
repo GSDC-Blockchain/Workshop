@@ -1,18 +1,3 @@
-'''
-    GUIDELINES
-
-    1. send_address_to_neighbors(address) -> Used for ADVERTISING
-
-    Nodes can advertise their address to the network, so that the whole network learns about them,
-    by sending the address msg to their peers. The peers send the address to their peers, and the node initiator's address
-    propagates through the whole network.
-    It is important to note that peers will not accept an address if they already know it, and they will not send it to other nodes
-    This means that a node can only advertise itself once
-
-    2.
-
-
-'''
 
 import time
 
@@ -27,12 +12,16 @@ class SeedNode (Peer2PeerNode):
         super().__init__(host, port)
         self.node_pool = []
 
+    # Send a message to all nodes
     def send_message_to_nodes(self, type, data):
         self.send_to_nodes(type+"|"+data)
 
-    def send_to_node(self, n, data):
-        super().send_to_node(n,data)
+    # Send a message to a single node
+    def send_to_node(self, n, type, data):
+        super().send_to_node(n,type+"|"+data)
 
+
+    # On message receive - do something based on message type
     def node_message(self, connected_node, data):
         [type, message] = data.split(sep="|")
         if type == "addr" :
@@ -42,49 +31,33 @@ class SeedNode (Peer2PeerNode):
         elif type == "get_addr" :
             node = self.find_node(message)
             if(node != None):
-                self.send_to_node(node, self.get_neighbor_addresses())
-
+                self.send_to_node(node, "mult_addr", self.get_neighbor_addresses())
+        elif type == "mult_addr" :
+            addresses = message.split(',')
+            for address in addresses :
+                if self.address_exists(message) == False:
+                    self.node_pool.insert(message)
+       
+    # Find node by address
     def find_node(self, address):
         for node in self.all_nodes:
             if node.host+':'+node.port == address:
                 return node
 
 
-    # Address is host + port when testing on a single machine
+    # Address is host + : + port when testing on a single machine
     def address_exists(self, address):
         return address in self.node_pool
 
-    # Address is host + port when testing on a single machine
+    # Send address to all the neighbors
     def send_address_to_neighbors(self, address):
         for node in self.all_nodes:
             self.send_message('address')
-
         return
 
+    # Return all neighbor addresses
     def get_neighbor_addresses(self):
-        addresses = []
+        addresses = ""
         for node in self.all_nodes:
-            addresses.insert(node.host+':'+node.port)
+            addresses += node.host+':'+node.port
         return addresses
-
-
-
-node = SeedNode("127.0.0.1", 10002)
-time.sleep(1)
-
-# Do not forget to start your node!
-node.start()
-time.sleep(1)
-
-# Connect with another node, otherwise you do not create any network!
-node.connect_with_node('127.0.0.1', 10001)
-time.sleep(2)
-
-b = Block(prevHash=GENESIS_HASH)
-
-# Example of sending a message to the nodes (dict).
-node.send_to_nodes({"message": b.toString()})
-
-time.sleep(5) # Create here your main loop of the application
-
-node.stop()
