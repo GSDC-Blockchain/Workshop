@@ -6,16 +6,16 @@ num = 0
 class Block :
     def __init__(self, prevHash):
         global num
-        self.blockSize = ""
+        self.blockSize = " "
         self.header = BlockHeader(prevBlockHash=prevHash)
-        self.transactionCounter = ""
+        self.transactionCounter = " "
         self.transactions = []
-        self.info = ""
+        self.info = " "
         self.number = str(num)
         num+=1
 
     def init_from_message(self, message):
-        [self.blockSize, blockHeaderTmp, self.transactionCounter, self.transactions, self.info, self.number] = message.split(BLOCK_DELIMITER)
+        [self.blockSize, blockHeaderTmp, self.transactionCounter, self.info, self.number] = message.split(BLOCK_DELIMITER)
         self.header.init_from_message(blockHeaderTmp)
 
     def print(self):

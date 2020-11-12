@@ -14,11 +14,13 @@ class SeedNode (Peer2PeerNode):
 
     # Send a message to all nodes
     def send_message_to_nodes(self, type, data):
-        self.send_to_nodes(type+"|"+data)
+        for node in self.all_nodes:
+            self.send_to_node(node, type, data)
 
     # Send a message to a single node
     def send_to_node(self, n, type, data):
         super().send_to_node(n,type+"|"+data)
+
 
 
     # On message receive - do something based on message type
@@ -37,7 +39,10 @@ class SeedNode (Peer2PeerNode):
             for address in addresses :
                 if self.address_exists(message) == False:
                     self.node_pool.insert(message)
-       
+        elif type == "block" :
+            block = Block("")
+            block.init_from_message(message)
+            print(block.toString())
     # Find node by address
     def find_node(self, address):
         for node in self.all_nodes:
@@ -59,5 +64,5 @@ class SeedNode (Peer2PeerNode):
     def get_neighbor_addresses(self):
         addresses = ""
         for node in self.all_nodes:
-            addresses += node.host+':'+node.port
-        return addresses
+            addresses += node.host+':'+node.port + ','
+        return addresses[0, len(addresses)-1]

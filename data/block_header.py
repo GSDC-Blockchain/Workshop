@@ -1,13 +1,13 @@
 
-HEADER_DELIMITER = ','
+HEADER_DELIMITER = '*'
 
 class BlockHeader :
     def __init__(self, prevBlockHash):
         self.previousBlockHash = prevBlockHash
-        self.timestamp = ""
-        self.nonce = ""
-        self.difficulty = ""
-        self.merkleroot = ""
+        self.timestamp = " "
+        self.nonce = " "
+        self.difficulty = " "
+        self.merkleroot = " "
 
     def init_from_message(self, message):
         [self.previousBlockHash, self.timestamp, self.nonce, self.difficulty, self.merkleroot] = message.split(HEADER_DELIMITER)
