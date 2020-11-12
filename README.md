@@ -26,6 +26,11 @@
 
     Send multiple addresses to a node, delimited by a comma (,)
 
+ - **block**
+ 
+    Send the whole block (including the header)
+    Blocks and headers have different delimiters for simplicity
+    
   ## Nodes
 
  - **Seed Node** -> a node that has been in the network for a long time, and is expected to stay in the network
