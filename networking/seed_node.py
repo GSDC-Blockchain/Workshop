@@ -5,6 +5,9 @@ from networking.p2pnode import Peer2PeerNode
 from data.block import Block
 from data.genesis_block import *
 
+MAX_CONNECTED_NODES = 8
+
+
 class SeedNode (Peer2PeerNode):
 
     # Python class constructor
@@ -20,8 +23,6 @@ class SeedNode (Peer2PeerNode):
     # Send a message to a single node
     def send_to_node(self, n, type, data):
         super().send_to_node(n,type+"|"+data)
-
-
 
     # On message receive - do something based on message type
     def node_message(self, connected_node, data):
@@ -42,7 +43,19 @@ class SeedNode (Peer2PeerNode):
         elif type == "block" :
             block = Block("")
             block.init_from_message(message)
-            print(block.toString())
+
+    # Limit connections to 8
+    def connect_with_node(self, host, port):
+        if len(self.all_nodes) < 8 :
+            super().connect_with_node(host,port)
+
+    # Connect with a node from the pool, and remove it from the pool
+    def connect_with_pool_node(self):
+        if len(self.node_pool) > 0:
+            node = self.node_pool.pop()
+            self.connect_with_node(node.host, node.port)
+
+
     # Find node by address
     def find_node(self, address):
         for node in self.all_nodes:
