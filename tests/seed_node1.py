@@ -1,26 +1,28 @@
-import time
+from global_com import firebase_api
+from global_com.auth import User
+from global_com.chan import chans
+from global_com.message_channel import _MessageChannel
 
+from data.block import Block
 from networking.seed_node import SeedNode
 
 
-# Node usage
+# Double \
+firebase_api.database.setup("C:\\Users\\Filip\\Desktop\\setup.json")
+chans.setup()
 
-node = SeedNode("192.168.0.12", 10001)
-time.sleep(1)
+u = User.login("filipdj98@gmail.com", "filip")
 
-# Do not forget to start your node!
-node.start()
-time.sleep(1)
-
-# Connect with another node, otherwise you do not create any network!
-node.connect_with_node('192.168.253.1', 10001)
-time.sleep(2)
-
-# Example of sending a message to the nodes (dict).
-node.send_message_to_nodes("msg", "aa")
-
-time.sleep(5) # Create here your main loop of the application
-
-node.stop()
+seed_n = SeedNode(u)
 
 
+u2 = User.login("milan@gmail.com", "mmm")
+
+msgChan = _MessageChannel(u2)
+b = Block("")
+chans.addChannel(msgChan)
+
+chans.sendMessage('filipdj98@gmail.com',u2.email,'block', b.toString())
+
+
+seed_n.start()
