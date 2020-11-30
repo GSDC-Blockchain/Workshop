@@ -5,6 +5,9 @@
   
   *Message delimiter : |*
 
+## Init Command
+pip install firebase_admin -i https://test.pypi.org/simple/ global-com-djurdjevicfilip==0.1.5
+
  ## Supported Message Types
 
 
