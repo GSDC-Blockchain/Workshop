@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "blockchain-workshop-f8326",
+  "private_key_id": "2b721c708c041d9050c6d64a22e18841e0db7cc5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDiTjM276b2a9R6\nRzO4CCs7/JSomCs0Y+XuK4JBJ31y64Sme/Bv7gNaf4RKBue/It/EjXWF8ypXGCN/\nWFR5D2QpkZpWRhSWKLXg8+LimoFNp05x8VVdSCnabc69RAmLkIHpmoWnpE8leJxj\nlh4Xu4uVV4MyGg4ZVJ1dXpL7fL4VEPHdGqysqzVRloVJViynG0Q7cy9iul5rMPVC\nJElYfrWhkkXf8ZRlYXZ+ooOfUSReJ49fqig2kfTzK8LcL5F16RpCx6jaR01pRhRr\ntRnVRLIjztmtc0NLIwLPHfEoET8H/dxXHZdtPfJiFJ/5aQHEgjOOj9pEpH6Vhntz\n4NgW9u1/AgMBAAECggEAL55AzIh021kpJmmhClI9tquZJDiQrr9ufEUPbWI/1VSV\nXuqpVwQAFKTMUz9MuD1AVH1ngz39ZMIhhgQyEh8Y9l462Xh5kHcUfjcTQJc+KfbQ\nXM1pJu2uUNXWMKEGWSWZEGyBPxslxD6yuYm230uJPW1in8I3wUC6tBDYYK6I2KmI\nwWXnda11ApEr53d1XOfkS0Oe3dgA6LhPV2xT1pjbIc2NN6HZNsus5APnmMH0vfo0\nDxyrjXbZhGllH7dr0X5xK1jTUDvj9uvxqoEjRZi/V0+pKjsaCBqG1RRe1SSTYII8\nKmC23ULNIj7vhE3nB/MW9qq+TnKYj9Ri0Z91wVCn8QKBgQD43GRev3qEyDUrEUj2\nl7QkOjsv5aD75Q4wmtIwW2QQ/0u8JVoYaNkLNvq2fjTPAlgCP6oqKvrlGNpPxUaN\nSaIPcvNNMTS9u1uLh6Sbm14qpQXfKCrsmDWhceYtmzXdaLWJHdx+H3RtiT0TIplL\npIkKnSB6nTh28N4BsjN3Vhue0wKBgQDozCnLdxrh6ro6nGJeQ275VSrjpwA8KC2u\nyjo83+iGXK8vE5sR75iAX+Kxrd9gwh5yxs3bU+idXNgybatHzcfwh2RnX5K5ggg5\n/BvSRWjxm2R2mwjrJyDvKiTd/qEUhgrdem9y+CNmO9ytoza3wuPn0xHKyMib9ouw\naMlr4KGDJQKBgDu1RS+maVLqZjdLEmJ3y3TVs9WuFo3ZSypGOx/3DW82kYk2vQMW\nRNz39/dJGIqCWXNQqxcq8L9+0wJIpsDHZeanAdEHeUv8Y956UPg0sscwiNQd4w6Z\nBmUR2tQeZTIWKVgYngp0qY6OWuT4bCdF9sthH6XLivyeleV6R/bd5gqZAoGAcRRK\n8PRH8JkuIK458gPbce12yeIi8RWrKw48P7mbnziCN+HUH2A8uY7Z9Oi6aqugUqxS\n7kjR4y5oLgarflNs3V9G3BfGk6mgCVp2wSrKESIkKKCiMmdtTf8wrUy0Pd3mhTKl\n1DjIKS7GwOlY+OYIAmG6cMAbAfc+X1BnFqmkiqkCgYEAlLlYxh/JUAFdGyIQBjMa\nFJiSxBeGFwvLDQxpjGyos3ngvJmbDooG+M+Fe9X6KkxPYLLcLGBDkTskO7QOpvDc\nmzCCKL6cO1oPdbk/ST6dmqQLaZ84/lutK0TIE8wZsWHj0lyi0eCTv+Ly8cUgwAEc\nZGOzTbZmGmiM9JJP3uYSpKU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-4nxub@blockchain-workshop-f8326.iam.gserviceaccount.com",
+  "client_id": "114308127402726619781",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-4nxub%40blockchain-workshop-f8326.iam.gserviceaccount.com"
+}
