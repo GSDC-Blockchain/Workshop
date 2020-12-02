@@ -21,6 +21,8 @@ class SeedNode:
         chans.addChannel(self.channel)
         self.node_pool = []
         self.mainThread = threading.Thread(target=self.threadFunction)
+        self.starting_addresses = ['','','']
+
 
     # Send a message to all nodes
     def send_message_to_nodes(self, type, data):
@@ -43,9 +45,10 @@ class SeedNode:
         self.mainThread.start()
 
     # On message receive - do something based on message type
-    def node_message(self, connected_node, type, message):
+    def node_message(self, sender, type, message):
+        # Return only the starting addresses
         if type == "get_addr" :
-            self.send_to_node(message, "mult_addr", self.get_neighbor_addresses())
+            self.send_to_node(message, "mult_addr", self.get_starting_addresses())
         elif type == "mult_addr" :
             addresses = message.split(',')
             for address in addresses :
@@ -56,25 +59,15 @@ class SeedNode:
             block.init_from_message(message)
             print(block.toString())
 
-    """
-    # Limit connections to 8
-    def connect_with_node(self, host, port):
-        if len(self.all_nodes) < 8 :
-            super().connect_with_node(host,port)
-
-    # Connect with a node from the pool, and remove it from the pool
-    def connect_with_pool_node(self):
-        if len(self.node_pool) > 0:
-            node = self.node_pool.pop()
-            self.connect_with_node(node.host, node.port)
-    """
+        elif type == "connect":
+            self.send_to_node(sender, "connected", "")
 
     def address_exists(self, address):
         return address in self.node_pool
 
     # Return all neighbor addresses
-    def get_neighbor_addresses(self):
+    def get_starting_addresses(self):
         addresses = ""
-        for addr in self.connected_nodes:
+        for addr in self.starting_addresses:
             addresses += addr + ','
         return addresses[0, len(addresses)-1]
