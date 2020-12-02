@@ -66,7 +66,7 @@ class Node:
     # On message receive - do something based on message type
     def node_message(self, sender, type, message):
         if type == "get_addr":
-            self.send_to_node(message, "mult_addr", self.get_neighbor_addresses())
+            self.send_to_node(sender, "mult_addr", self.get_neighbor_addresses())
         elif type == "mult_addr":
             addresses = message.split(',')
             for address in addresses:
@@ -74,18 +74,17 @@ class Node:
                     self.node_pool.insert(address)
         elif type == "block":
             self.block_function()
-            block = Block("")
-            block.init_from_message(message)
-
-            return block
-            print(block.toString())
         elif type == "connect":
             if len(self.connected_nodes) < 8:
                 self.send_to_node(sender, "connected", "")
         elif type == "connected":
             self.connection_error = False
+        elif type == "error":
+            print("error: " + message)
+        else:
+            self.send_to_node(sender, "error", "")
 
-    # Should be implemented by the user
+    # TODO Should be implemented by the user
     def block_function(self, message):
         # check the hash!
         # check the block

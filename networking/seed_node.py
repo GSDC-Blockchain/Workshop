@@ -24,11 +24,6 @@ class SeedNode:
         self.starting_addresses = ['','','']
 
 
-    # Send a message to all nodes
-    def send_message_to_nodes(self, type, data):
-        for node in self.all_nodes:
-            self.send_to_node(node, type, data)
-
     # Send a message to a single node
     def send_to_node(self, id, type, data):
         chans.sendMessage(id, type, data)
@@ -48,22 +43,11 @@ class SeedNode:
     def node_message(self, sender, type, message):
         # Return only the starting addresses
         if type == "get_addr" :
-            self.send_to_node(message, "mult_addr", self.get_starting_addresses())
-        elif type == "mult_addr" :
-            addresses = message.split(',')
-            for address in addresses :
-                if self.address_exists(address) == False:
-                    self.node_pool.insert(address)
-        elif type == "block" :
-            block = Block("")
-            block.init_from_message(message)
-            print(block.toString())
-
+            self.send_to_node(sender, "mult_addr", self.get_starting_addresses())
         elif type == "connect":
             self.send_to_node(sender, "connected", "")
-
-    def address_exists(self, address):
-        return address in self.node_pool
+        else:
+            self.send_to_node(sender, "error", "")
 
     # Return all neighbor addresses
     def get_starting_addresses(self):
