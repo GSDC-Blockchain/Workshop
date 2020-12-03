@@ -5,4 +5,6 @@
 DIFFICULTY = 1
 
 # List of seed nodes
-SEED_NODES = [""]
+SEED_NODE = "seed1"
+
+MASTER_NODE = "master1"

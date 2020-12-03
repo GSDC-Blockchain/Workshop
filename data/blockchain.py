@@ -17,3 +17,9 @@ class Blockchain:
         for key in self.chain:
             block = self.chain.get(key)
             block.print()
+
+    def toString(self):
+        str = ""
+        for key, block in self.chain.items():
+            str += block.toString() + ":"
+        return str

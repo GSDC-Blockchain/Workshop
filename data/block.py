@@ -12,10 +12,11 @@ class Block :
         self.transactions = []
         self.info = " "
         self.number = str(num)
+        self.blockHash = " "
         num+=1
 
     def init_from_message(self, message):
-        [self.blockSize, blockHeaderTmp, self.transactionCounter, self.info, self.number] = message.split(BLOCK_DELIMITER)
+        [self.blockSize, blockHeaderTmp, self.transactionCounter, self.info, self.number ,self.blockHash] = message.split(BLOCK_DELIMITER)
         self.header.init_from_message(blockHeaderTmp)
 
     def print(self):
@@ -28,6 +29,7 @@ class Block :
                 self.header.toString() + BLOCK_DELIMITER +\
                 self.transactionCounter + BLOCK_DELIMITER + \
                 self.info + BLOCK_DELIMITER +\
-                self.number;
+                self.number + BLOCK_DELIMITER +\
+                self.blockHash;
 
 
