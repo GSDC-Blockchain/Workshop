@@ -42,13 +42,11 @@ class UserNode(Node):
 
     def block_function(self, message):
         # Check the hash!
-
         b = Block("")
         b.init_from_message(message)
-        last_block = self.blockchain.get_last_block()
-        last_block_num = last_block.number
+        len = self.blockchain.len()
 
-        if last_block_num == b.number - 1:
+        if len == b.number:
             self.blockchain.insert_block(block = b, blockHash = b.blockHash)
 
 addr1 = UserNode(User(email='addr1'))
@@ -156,8 +154,10 @@ for neighbor in neighbor_list:
             break
 
 b = Block("hashshs")
-
+b.number = user_node.blockchain.len()
 #b.blockHash = crypto.mine(b.toString(), system_parameters.DIFFICULTY)
 
+message = user_node.confirm(b.toString())
+message.print()
 user_node.send_message_to_all_connected_nodes('block',b.toString())
 

@@ -86,7 +86,7 @@ class Node:
                 self.node_pool.append(message)
                 self.send_message_to_all_connected_nodes("addr", message)
         elif type == "block":
-            self.block_function()
+            self.block_function(message)
         elif type == "connect":
             if len(self.connected_nodes) < 8:
                 self.send_to_node(sender, "connected", "")

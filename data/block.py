@@ -25,11 +25,11 @@ class Block :
 
     def toString(self):
         # Add transactions later
-        return self.blockSize + BLOCK_DELIMITER +\
+        return str(self.blockSize) + BLOCK_DELIMITER +\
                 self.header.toString() + BLOCK_DELIMITER +\
-                self.transactionCounter + BLOCK_DELIMITER + \
-                self.info + BLOCK_DELIMITER +\
-                self.number + BLOCK_DELIMITER +\
-                self.blockHash;
+                str(self.transactionCounter) + BLOCK_DELIMITER + \
+                str(self.info) + BLOCK_DELIMITER +\
+                str(self.number) + BLOCK_DELIMITER +\
+                str(self.blockHash);
 
 
